@@ -2,78 +2,75 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="repasoTallerFinal.MainPage"
-             Title="JA Recargas">
+             Title="JA Recargas"
+             BackgroundColor="#F2F2F7">
 
     <ScrollView>
-        <VerticalStackLayout Padding="20" Spacing="25">
+        <VerticalStackLayout Padding="20" Spacing="30">
 
             <Label Text="JA RECARGAS"
-                   FontSize="32"
+                   FontSize="34"
                    FontAttributes="Bold"
+                   TextColor="#4A148C"
                    HorizontalOptions="Center" />
 
-            <!-- Etiqueta para número -->
             <Label Text="Ingrese el número de teléfono:"
-                   FontAttributes="Bold" />
+                   FontSize="16"
+                   FontAttributes="Bold"
+                   TextColor="#333" />
+            <Frame CornerRadius="10" Padding="10" BackgroundColor="White" HasShadow="False">
+                <Entry x:Name="numeroEntry"
+                       Placeholder="Ej. 0991234567"
+                       Keyboard="Telephone"
+                       FontSize="18"
+                       TextColor="#000" />
+            </Frame>
 
-            <!-- Teléfono centrado -->
-            <Entry x:Name="numeroEntry"
-                   Placeholder="Ingrese número telefónico"
-                   Keyboard="Telephone"
-                   FontSize="18"
-                   BackgroundColor="#EFEFEF"
-                   HorizontalOptions="Center"
-                   WidthRequest="250" />
-
-            <!-- Contenido en 2 columnas -->
             <Grid ColumnDefinitions="*,*" ColumnSpacing="20">
 
-                <!-- Operador a la izquierda -->
-                <VerticalStackLayout Grid.Column="0">
-                    <Label Text="Operador" FontAttributes="Bold"/>
-                    <Picker x:Name="operadorPicker"
-                            Title="Seleccione operador"
-                            FontSize="18"
-                            HorizontalOptions="Fill"/>
-                </VerticalStackLayout>
+                <Frame Grid.Column="0" Padding="10" BackgroundColor="White" CornerRadius="12" HasShadow="True">
+                    <VerticalStackLayout>
+                        <Label Text="Operador"
+                               FontAttributes="Bold"
+                               FontSize="16"
+                               TextColor="#333" />
+                        <Picker x:Name="operadorPicker"
+                                Title="Seleccione operador"
+                                FontSize="18"
+                                TextColor="#000"
+                                BackgroundColor="#F9F9F9" />
+                    </VerticalStackLayout>
+                </Frame>
 
-                <!-- Monto a la derecha (CheckBox) -->
-                <VerticalStackLayout Grid.Column="1">
-                    <Label Text="Seleccione el monto deseado:" FontAttributes="Bold"/>
-
-                    <HorizontalStackLayout>
-                        <CheckBox x:Name="monto3Check" CheckedChanged="OnMontoCheckedChanged" />
-                        <Label Text="$3" VerticalOptions="Center" />
-                    </HorizontalStackLayout>
-
-                    <HorizontalStackLayout>
-                        <CheckBox x:Name="monto5Check" CheckedChanged="OnMontoCheckedChanged" />
-                        <Label Text="$5" VerticalOptions="Center" />
-                    </HorizontalStackLayout>
-
-                    <HorizontalStackLayout>
-                        <CheckBox x:Name="monto10Check" CheckedChanged="OnMontoCheckedChanged" />
-                        <Label Text="$10" VerticalOptions="Center" />
-                    </HorizontalStackLayout>
-                </VerticalStackLayout>
+                <Frame Grid.Column="1" Padding="10" BackgroundColor="White" CornerRadius="12" HasShadow="True">
+                    <VerticalStackLayout Spacing="12">
+                        <Label Text="Seleccione el monto deseado:"
+                               FontAttributes="Bold"
+                               FontSize="16"
+                               TextColor="#333" />
+                        <RadioButton x:Name="monto3Radio" Content="$3" GroupName="monto" CheckedChanged="OnMontoCheckedChanged"/>
+                        <RadioButton x:Name="monto5Radio" Content="$5" GroupName="monto" CheckedChanged="OnMontoCheckedChanged"/>
+                        <RadioButton x:Name="monto10Radio" Content="$10" GroupName="monto" CheckedChanged="OnMontoCheckedChanged"/>
+                    </VerticalStackLayout>
+                </Frame>
 
             </Grid>
 
-            <!-- Texto dinámico de selección -->
             <Label x:Name="seleccionLabel"
                    Text=""
                    FontAttributes="Italic"
                    FontSize="16"
-                   TextColor="DarkSlateGray"
+                   TextColor="#666"
                    HorizontalOptions="Center" />
 
-            <!-- Botón recarga -->
             <Button Text="Realizar Recarga"
                     Clicked="OnRecargarClicked"
-                    BackgroundColor="Purple"
+                    BackgroundColor="#6200EE"
                     TextColor="White"
                     FontSize="20"
-                    Padding="12,6"
+                    CornerRadius="12"
+                    Padding="14"
+                    WidthRequest="250"
                     HorizontalOptions="Center" />
 
         </VerticalStackLayout>
